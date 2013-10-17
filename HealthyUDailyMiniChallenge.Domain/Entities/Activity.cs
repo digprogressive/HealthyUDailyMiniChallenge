@@ -8,7 +8,7 @@ namespace HealthyUDailyMiniChallenge.Domain.Entities
 {
     public class Activity
     {
-        public int ActivityId { get; set; }
+        public Guid ActivityId { get; set; }
         public string ActivityDesc { get; set; }
         public int ActivityReps { get; set; }
         public int ActivityDurationInSeconds { get; set; }

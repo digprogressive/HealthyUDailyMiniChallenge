@@ -41,7 +41,10 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Entities\Activity.cs" />
+    <Compile Include="Entities\ActivityStatus.cs" />
     <Compile Include="Entities\Challenge.cs" />
+    <Compile Include="Entities\ChallengeStatus.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IActivityRepository.cs" />
     <Compile Include="Interfaces\IChallengeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -308,7 +308,7 @@
     <Content Include="Views\ChallengeTracker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Content\App_Data\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
