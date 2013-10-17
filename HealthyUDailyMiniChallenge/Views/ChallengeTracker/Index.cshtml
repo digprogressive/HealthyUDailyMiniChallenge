@@ -1,0 +1,25 @@
+﻿@model IEnumerable<HealthyUDailyMiniChallenge.Domain.Entities.Challenge>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+<table>
+@foreach (var item in Model)
+{
+   <tr>
+       <td>
+           @item.ChallengeDescription
+       </td>
+       <td>
+           @item.MaxDurationInSeconds
+       </td>
+       <td>
+           @item.CreatedBy
+       </td>
+   </tr>
+     
+}
+    </table>
+
+<h2>Index</h2>
