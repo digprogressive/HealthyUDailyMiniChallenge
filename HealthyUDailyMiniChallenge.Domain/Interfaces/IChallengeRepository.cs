@@ -9,7 +9,7 @@ namespace HealthyUDailyMiniChallenge.Domain.Interfaces
 {
     public interface IChallengeRepository
     {
-        IQueryable<Challenge> Challenges { get; set; }
+        IQueryable<Challenge> Challenges();
 
     }
 }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace HealthyUDailyMiniChallenge.Domain.Interfaces
 {
-    public interface IActivityRepository
+    public interface IUserRepository
     {
-        IQueryable<Activity> Activities();
+        IQueryable<User> Users();
     }
 }

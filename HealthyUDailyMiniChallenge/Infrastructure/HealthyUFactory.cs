@@ -30,17 +30,17 @@ namespace HealthyUDailyMiniChallenge.Infrastructure
         {
             Mock<IChallengeRepository> mockChallengeRepository = new Mock<IChallengeRepository>();
 
-            mockChallengeRepository.Setup(r => r.Challenges).Returns(new List<Challenge> 
+            mockChallengeRepository.Setup(r => r.Challenges()).Returns(new List<Challenge> 
             { 
                 new Challenge { 
-                    ChallengeId = 1, 
+                    ChallengeId = Guid.NewGuid(), 
                     ChallengeDescription = "a difficult challenge", 
                     MaxDurationInSeconds = 300,
                     ListOfActivities = new List<Activity> 
                     { 
                         new Activity
                         { 
-                            ActivityId = 1,
+                            ActivityId = Guid.NewGuid(),
                             ActivityDesc = "push up",
                             ActivityReps = 50,
                             ActivityDurationInSeconds = 60,
@@ -48,7 +48,7 @@ namespace HealthyUDailyMiniChallenge.Infrastructure
                             ActivityDistanceInFeet = null
                         }
                     },
-                    CreatedBy = "Eric"
+                    CreatedBy = new User() {Name = "Eric"}
                 }
             }.AsQueryable);
 

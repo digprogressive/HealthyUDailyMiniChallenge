@@ -1,11 +1,11 @@
-﻿@model IEnumerable<HealthyUDailyMiniChallenge.Domain.Entities.Challenge>
+﻿@model IQueryable<HealthyUDailyMiniChallenge.Domain.Entities.Challenge>
 
 @{
     ViewBag.Title = "Index";
     
 }
 <table>
-@foreach (var item in Model)
+@foreach (var item in Model.ToList())
 {
    <tr>
        <td>
@@ -15,7 +15,7 @@
            @item.MaxDurationInSeconds
        </td>
        <td>
-           @item.CreatedBy
+           @item.CreatedBy.Name
        </td>
    </tr>
      

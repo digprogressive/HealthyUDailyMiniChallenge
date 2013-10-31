@@ -30,8 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,14 +45,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Concrete\ActivityRepository.cs" />
+    <Compile Include="Concrete\ChallengeRepository.cs" />
+    <Compile Include="Concrete\ChallengeStatusRepository.cs" />
+    <Compile Include="Concrete\UserRepository.cs" />
+    <Compile Include="Concrete\ActivityStatusRepository.cs" />
+    <Compile Include="Concrete\HealthyUEFDbContext.cs" />
+    <Compile Include="Concrete\HealthyURepository.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\ActivityStatus.cs" />
     <Compile Include="Entities\Challenge.cs" />
     <Compile Include="Entities\ChallengeStatus.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Interfaces\IChallengeStatusRepository.cs" />
+    <Compile Include="Interfaces\IActivityStatusRepository.cs" />
     <Compile Include="Interfaces\IActivityRepository.cs" />
     <Compile Include="Interfaces\IChallengeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

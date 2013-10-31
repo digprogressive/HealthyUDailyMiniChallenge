@@ -19,7 +19,7 @@ namespace HealthyUDailyMiniChallenge.Controllers
 
         public ViewResult Index()
         {
-            return View(_challengeRepository.Challenges);
+            return View(_challengeRepository.Challenges());
         }
     }
 }
