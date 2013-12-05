@@ -52,6 +52,9 @@
     <Compile Include="Concrete\ActivityStatusRepository.cs" />
     <Compile Include="Concrete\HealthyUEFDbContext.cs" />
     <Compile Include="Concrete\HealthyURepository.cs" />
+    <Compile Include="Configurations\ActivityConfiguration.cs" />
+    <Compile Include="Configurations\ChallengeConfiguration.cs" />
+    <Compile Include="Data\HealthyUDatabaseInitializer.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\ActivityStatus.cs" />
     <Compile Include="Entities\Challenge.cs" />

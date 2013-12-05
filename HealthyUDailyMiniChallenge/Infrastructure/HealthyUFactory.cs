@@ -1,4 +1,5 @@
-﻿using HealthyUDailyMiniChallenge.Domain.Entities;
+﻿using HealthyUDailyMiniChallenge.Domain.Concrete;
+using HealthyUDailyMiniChallenge.Domain.Entities;
 using HealthyUDailyMiniChallenge.Domain.Interfaces;
 using Moq;
 using Ninject;
@@ -29,30 +30,29 @@ namespace HealthyUDailyMiniChallenge.Infrastructure
         public void AddBindings() 
         {
             Mock<IChallengeRepository> mockChallengeRepository = new Mock<IChallengeRepository>();
+            //mockChallengeRepository.Setup(r => r.Challenges()).Returns(new List<Challenge> 
+            //{ 
+            //    new Challenge { 
+            //        ChallengeId = Guid.NewGuid(), 
+            //        ChallengeDescription = "a difficult challenge", 
+            //        MaxDurationInSeconds = 300,
+            //        ListOfActivities = new List<Activity> 
+            //        { 
+            //            new Activity
+            //            { 
+            //                ActivityId = Guid.NewGuid(),
+            //                ActivityDesc = "push up",
+            //                ActivityReps = 50,
+            //                ActivityDurationInSeconds = 60,
+            //                ActivityImage = null,
+            //                ActivityDistanceInFeet = null
+            //            }
+            //        },
+            //        CreatedBy = new User() {Name = "Eric"}
+            //    }
+            //}.AsQueryable);
 
-            mockChallengeRepository.Setup(r => r.Challenges()).Returns(new List<Challenge> 
-            { 
-                new Challenge { 
-                    ChallengeId = Guid.NewGuid(), 
-                    ChallengeDescription = "a difficult challenge", 
-                    MaxDurationInSeconds = 300,
-                    ListOfActivities = new List<Activity> 
-                    { 
-                        new Activity
-                        { 
-                            ActivityId = Guid.NewGuid(),
-                            ActivityDesc = "push up",
-                            ActivityReps = 50,
-                            ActivityDurationInSeconds = 60,
-                            ActivityImage = null,
-                            ActivityDistanceInFeet = null
-                        }
-                    },
-                    CreatedBy = new User() {Name = "Eric"}
-                }
-            }.AsQueryable);
-
-            healthyUKernel.Bind<IChallengeRepository>().ToConstant(mockChallengeRepository.Object);
+            healthyUKernel.Bind<IChallengeRepository>().To<ChallengeRepository>();
 
  
         }

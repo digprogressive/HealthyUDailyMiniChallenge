@@ -12,7 +12,7 @@ namespace HealthyUDailyMiniChallenge.Domain.Entities
         public string ActivityDesc { get; set; }
         public int ActivityReps { get; set; }
         public int ActivityDurationInSeconds { get; set; }
-        public object ActivityImage { get; set; }
+        public string ActivityImage { get; set; }
         public int? ActivityDistanceInFeet { get; set; }
     }
 }

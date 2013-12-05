@@ -11,7 +11,7 @@ namespace HealthyUDailyMiniChallenge.Domain.Entities
         public Guid ChallengeId { get; set; }
         public string ChallengeDescription { get; set; }
         public int MaxDurationInSeconds { get; set; }
-        public IEnumerable<Activity> ListOfActivities { get; set; }
+        public ICollection<Activity> ListOfActivities { get; set; }
         public User CreatedBy { get; set; }
     }
 }
