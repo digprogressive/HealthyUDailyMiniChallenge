@@ -20,7 +20,10 @@ namespace HealthyUDailyMiniChallenge.Domain.Concrete
         public HealthyUEFDbContext()
             : base(nameOrConnectionString: "HealthyUEFDbContext")
         {
-            Database.SetInitializer<HealthyUEFDbContext>(new HealthyUDatabaseInitializer());
+            var initializer = new HealthyUDatabaseInitializer();
+            Database.SetInitializer<HealthyUEFDbContext>(initializer);
+
+            //.Database.ExecuteSqlCommand("ALTER DATABASE HealthyU SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
         }
 
         //static HealthyUEFDbContext()

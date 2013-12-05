@@ -9,8 +9,8 @@ namespace HealthyUDailyMiniChallenge.Domain.Entities
     public class ChallengeStatus
     {
         public Guid ChallengeStatusId { get; set; }
-        public Guid ChallengedId { get; set; }
         public Challenge AssignedChallenge { get; set; }
         public bool Status { get; set; }
+        public ICollection<ActivityStatus> ListOfActivityStatuses { get; set; }
     }
 }

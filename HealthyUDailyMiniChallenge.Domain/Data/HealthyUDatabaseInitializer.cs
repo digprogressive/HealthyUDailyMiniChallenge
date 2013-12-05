@@ -27,7 +27,21 @@ namespace HealthyUDailyMiniChallenge.Domain.Data
                 ListOfActivities = ListOfActs,
                 MaxDurationInSeconds = 2000
             };
+            ChallengeStatus newChallengeStatus = new ChallengeStatus
+            {
+                ChallengeStatusId = Guid.NewGuid(),
+                AssignedChallenge = newChallenge,
+                Status = true,
+                ListOfActivityStatuses = new List<ActivityStatus>() 
+                {
+                    new ActivityStatus() {ActivityStatusId = Guid.NewGuid(), AssignedActivity = ListOfActs.First(), Status = "Done"
+                    }
+                }
+            };
+
+
             context.Challenges.Add(newChallenge);
+            context.ChallengeStatuses.Add(newChallengeStatus);
             context.SaveChanges();
 
         }
