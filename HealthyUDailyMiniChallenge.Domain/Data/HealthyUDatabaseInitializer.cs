@@ -9,7 +9,7 @@ using HealthyUDailyMiniChallenge.Domain.Entities;
 
 namespace HealthyUDailyMiniChallenge.Domain.Data
 {
-    public class HealthyUDatabaseInitializer : DropCreateDatabaseAlways<HealthyUEFDbContext>
+    public class HealthyUDatabaseInitializer : DropCreateDatabaseIfModelChanges<HealthyUEFDbContext>
     {
         protected override void Seed(HealthyUEFDbContext context)
         {
@@ -23,8 +23,8 @@ namespace HealthyUDailyMiniChallenge.Domain.Data
             {
                 ChallengeDescription = "7 Minute Challenge",
                 ChallengeId = Guid.NewGuid(),
-                CreatedBy = new User() { UserName = "Eric", UserId = Guid.NewGuid(), Name = "Eric Preston" },
-                ListOfActivities = ListOfActs,
+                CreatedBy = new User() { UserName = "Eric", UserId = Guid.NewGuid(), Name = "Eric Preston", Password = "ericp2014" },
+                Activities = ListOfActs,
                 MaxDurationInSeconds = 2000
             };
             ChallengeStatus newChallengeStatus = new ChallengeStatus

@@ -12,7 +12,8 @@ namespace HealthyUDailyMiniChallenge.Domain.Configurations
     {
         public ChallengeConfiguration()
         {
-          // HasRequired(r => r.CreatedBy).WithMany(r => r.ListOfChallenges).HasForeignKey(r => r.ChallengeId);
+           //HasRequired(r => r.Activities).WithMany(r => r.).HasForeignKey(r => r.ChallengeId);
+            //HasMany(r => r.Activities).WithRequired(r=>r.ActivityId).HasForeignKey(r => r.ChallengeId);
         }
     }
 }

@@ -15,6 +15,9 @@ namespace HealthyUDailyMiniChallenge.Domain.Concrete
             return _healthyUEFDBContext.ChallengeStatuses;
         }
 
-
+        public IQueryable<ChallengeStatus> GetChallengeStatusesByUserName(string userName)
+        {
+            return _healthyUEFDBContext.ChallengeStatuses.Select(r => r).Where(r => r.ChallengeUser.UserName.ToLower() == userName.ToLower());
+        }
     }
 }

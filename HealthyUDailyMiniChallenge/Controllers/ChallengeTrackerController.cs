@@ -9,18 +9,18 @@ namespace HealthyUDailyMiniChallenge.Controllers
 {
     public class ChallengeTrackerController : Controller
     {
-        private IChallengeRepository _challengeRepository;
+        private IChallengeStatusRepository _challengeStatusRepository;
         //
         // GET: /ChallengeTracker/
-        public ChallengeTrackerController(IChallengeRepository challengeRepository)
+        public ChallengeTrackerController(IChallengeStatusRepository challengeStatusRepository)
         {
-            _challengeRepository = challengeRepository;
+            _challengeStatusRepository = challengeStatusRepository;
         }
 
         public ViewResult Index()
         {
-
-            return View(_challengeRepository.Challenges());
+            string username = "Eric";
+            return View(_challengeStatusRepository.GetChallengeStatusesByUserName(username));
         }
     }
 }

@@ -10,5 +10,6 @@ namespace HealthyUDailyMiniChallenge.Domain.Interfaces
     public interface IChallengeStatusRepository
     {
         IQueryable<ChallengeStatus> ChallengeStatuses();
+        IQueryable<ChallengeStatus> GetChallengeStatusesByUserName(string userName);
     }
 }

@@ -29,7 +29,7 @@ namespace HealthyUDailyMiniChallenge.Infrastructure
 
         public void AddBindings() 
         {
-            Mock<IChallengeRepository> mockChallengeRepository = new Mock<IChallengeRepository>();
+            //Mock<IChallengeRepository> mockChallengeRepository = new Mock<IChallengeRepository>();
             //mockChallengeRepository.Setup(r => r.Challenges()).Returns(new List<Challenge> 
             //{ 
             //    new Challenge { 
@@ -53,8 +53,8 @@ namespace HealthyUDailyMiniChallenge.Infrastructure
             //}.AsQueryable);
 
             healthyUKernel.Bind<IChallengeRepository>().To<ChallengeRepository>();
+            healthyUKernel.Bind<IChallengeStatusRepository>().To<ChallengeStatusRepository>();
 
- 
         }
     }
 }

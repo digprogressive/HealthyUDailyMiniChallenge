@@ -1,4 +1,5 @@
-﻿using HealthyUDailyMiniChallenge.Domain.Data;
+﻿using HealthyUDailyMiniChallenge.Domain.Configurations;
+using HealthyUDailyMiniChallenge.Domain.Data;
 using HealthyUDailyMiniChallenge.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -30,9 +31,9 @@ namespace HealthyUDailyMiniChallenge.Domain.Concrete
         //{
         //    Database.SetInitializer<HealthyUEFDbContext>(new HealthyUDatabaseInitializer());
         //}
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    //modelBuilder.Ent
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new ChallengeConfiguration());
+        }
     }
 }

@@ -11,9 +11,7 @@ namespace HealthyUDailyMiniChallenge.Domain.Concrete
         protected HealthyUEFDbContext _healthyUEFDBContext;
         public HealthyURepository()
         {
-
             _healthyUEFDBContext = new HealthyUEFDbContext();
-            
         }
 
         public HealthyURepository(HealthyUEFDbContext healthyDbContext)

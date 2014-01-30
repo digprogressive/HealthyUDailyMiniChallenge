@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthyUDailyMiniChallenge.Domain.Entities
 {
-    public class Activity
+    public partial class Activity
     {
         public Guid ActivityId { get; set; }
         public string ActivityDesc { get; set; }
@@ -14,5 +14,8 @@ namespace HealthyUDailyMiniChallenge.Domain.Entities
         public int ActivityDurationInSeconds { get; set; }
         public string ActivityImage { get; set; }
         public int? ActivityDistanceInFeet { get; set; }
+
+        //public Guid ChallengeId { get; set; }
+        //public virtual Challenge Challenge { get; set; }
     }
 }

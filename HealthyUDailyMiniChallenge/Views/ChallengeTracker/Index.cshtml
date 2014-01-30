@@ -1,4 +1,4 @@
-﻿@model IQueryable<HealthyUDailyMiniChallenge.Domain.Entities.Challenge>
+﻿@model IQueryable<HealthyUDailyMiniChallenge.Domain.Entities.ChallengeStatus>
 
 @{
     ViewBag.Title = "Index";
@@ -9,13 +9,13 @@
 {
    <tr>
        <td>
-           @item.ChallengeDescription
+           @item.AssignedChallenge.ChallengeDescription
        </td>
        <td>
-           @item.MaxDurationInSeconds
+           @item.AssignedChallenge.MaxDurationInSeconds
        </td>
        <td>
-           @item.CreatedBy
+           @item.ChallengeUser.Name
        </td>
    </tr>
      
