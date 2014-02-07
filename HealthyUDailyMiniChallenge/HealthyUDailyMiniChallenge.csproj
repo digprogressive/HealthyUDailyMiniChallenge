@@ -188,6 +188,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AssignChallengeController.cs" />
     <Compile Include="Controllers\ChallengeTrackerController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,6 +196,7 @@
     </Compile>
     <Compile Include="Infrastructure\HealthyUFactory.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ChallengeUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +308,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\ChallengeTracker\Index.cshtml" />
+    <Content Include="Views\AssignChallenge\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\App_Data\" />

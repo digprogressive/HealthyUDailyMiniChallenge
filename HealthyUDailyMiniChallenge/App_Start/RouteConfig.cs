@@ -16,7 +16,7 @@ namespace HealthyUDailyMiniChallenge
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "ChallengeTracker", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "AssignChallenge", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

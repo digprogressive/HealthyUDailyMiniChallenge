@@ -1,0 +1,11 @@
+﻿@model HeathyUDailyMiniChallenge.Models.ChallengeUser
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.DropDownListFor(
+                m => m.AvailableChallenges,
+                new SelectList(Model.AvailableChallenges, "ChallengeId", "ChallengeDescription"))
+
