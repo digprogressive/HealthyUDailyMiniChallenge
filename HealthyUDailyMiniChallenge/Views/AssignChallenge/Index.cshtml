@@ -1,14 +1,33 @@
-﻿@model HeathyUDailyMiniChallenge.Models.ChallengeUser
+﻿@*@model HeathyUDailyMiniChallenge.Models.ChallengeUser
+*@
 
 @{
     ViewBag.Title = "Index";
 }
+<!--
 <script src="~/Scripts/knockout-2.2.0.debug.js"></script>
 <script src="~/Scripts/knockout-2.2.0.js"></script>
-
+    -->
 <h2>Index</h2>
-@Html.DropDownListFor(
-                m => m.AvailableChallenges,
-                new SelectList(Model.AvailableChallenges, "ChallengeId", "ChallengeDescription"))
+<select data-bind="options: challenges"></select>
 
+<script type="text/javascript">
+    var challengeVM = function(){
+        var self = this;
+        self.challengeId = ko.observable();
+        self.challengeDescription = ko.observable();
+    }
+
+    $(function() {
+        //var challengeObject = new challengeVM();
+        //challengeObject.challengeId(self.challengeId).challengeDescription(self.challengeDescription);
+        ////challengeObject.challengeId(ch
+        //ko.applyBindings(challengeObject);
+        //});
+        var challenges = $.getJSON('/Api/ChallengeApi', function (data) {
+            //self.challengeId = data.challengeId;
+            self.challengeDescription = data.challengeDescription;
+        });
+    });
+</script>
 

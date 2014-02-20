@@ -27,7 +27,7 @@ namespace HeathyUDailyMiniChallenge.Controllers
         //    return challengeuser;
         //}
 
-        public IEnumerable<Challenge> Get()
+        public IEnumerable<Challenge> GetAllChallenges()
         {
             return repository.Challenges();
         }

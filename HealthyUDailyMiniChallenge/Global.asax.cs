@@ -21,7 +21,7 @@ namespace HealthyUDailyMiniChallenge
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            ConfigureWebApi(GlobalConfiguration.Configuration);
+            CustomizeConfig(GlobalConfiguration.Configuration);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -30,17 +30,23 @@ namespace HealthyUDailyMiniChallenge
 
             ControllerBuilder.Current.SetControllerFactory(new HealthyUFactory());
         }
-
-        public static void ConfigureWebApi(HttpConfiguration http)
+        
+        public static void CustomizeConfig(HttpConfiguration config)
         {
-            var jf = http.Formatters.IndexOf(http.Formatters.JsonFormatter);
-            http.Formatters[jf] = new JsonMediaTypeFormatter()
-            {
-                SerializerSettings = new JsonSerializerSettings()
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                }
-            };
+            // Remove Xml formatters. This means when we visit an endpoint from a browser,
+            // Instead of returning Xml, it will return Json.
+            // More information from Dave Ward: http://jpapa.me/P4vdx6
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            // Configure json camelCasing per the following post: http://jpapa.me/NqC2HH
+            // Here we configure it to write JSON property names with camel casing
+            // without changing our server-side data model:
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.ContractResolver =
+                new CamelCasePropertyNamesContractResolver();
+
+            // Add model validation, globally
+           // config.Filters.Add(new ValidationActionFilter());
         }
     }
 }
