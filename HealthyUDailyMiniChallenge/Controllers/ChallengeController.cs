@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace HeathyUDailyMiniChallenge.Controllers
 {
-    public class ChallengeApiController : ApiController
+    public class ChallengeController : ApiController
     {
 
         private ChallengeRepository repository = new ChallengeRepository();

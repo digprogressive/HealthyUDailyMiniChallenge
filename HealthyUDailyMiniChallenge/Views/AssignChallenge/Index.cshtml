@@ -4,19 +4,52 @@
 @{
     ViewBag.Title = "Index";
 }
-<!--
-<script src="~/Scripts/knockout-2.2.0.debug.js"></script>
-<script src="~/Scripts/knockout-2.2.0.js"></script>
-    -->
-<h2>Index</h2>
-<select data-bind="options: availableChallenges, optionsText: 'challengeDescription'"></select>
 
-<script type="text/javascript">   
-    $.getJSON('/Api/ChallengeApi', null, function (challengedata, status, xhr) {
-        var viewModel = {
-            availableChallenges: ko.observableArray(challengedata)
-        };
-        ko.applyBindings(viewModel);
-    });
+<script src="~/Scripts/resources.js"></script>
+<script src="~/Scripts/knockout-2.2.0.js"></script>
+   
+<h2>Index</h2>
+<select data-bind="options: challenges, optionsText: 'challengeDescription'" multiple= "true"></select>
+<!--<select data-bind="options: challengeUser, optionsText: 'challengeDescription'" multiple= "true"></select>-->
+
+<script type="text/javascript">
+    var challengeUsers;
+    var challenges;
+    var challengesResource = new Resource('/Api/Challenge');
+    var gettingChallenges = challengesResource.get();
+    var challengeUsersResource = new Resource('/Api/ChallengeUsers');
+    var gettingChallengeUsers = challengeUsersResource.get();
+
+
+    gettingChallenges.done(function (challengesFromServer) { challenges = challengesFromServer; });
+
+
+    //$.getJSON('/Api/Challenge', null, function (challengedata, status, xhr) {
+    //    var viewModel = {
+    //        availableChallenges: ko.observableArray(challengedata)
+    //    };
+    //    ko.applyBindings(viewModel);
+    //});
+
+ 
+    gettingChallengeUsers.done(function (challengeUsersFromServer) { challengeUsers = challengeUsersFromServer; });
+
+    $.when(gettingChallenges, gettingChallengeUsers).done(readyToRock);
+
+    function readyToRock() {
+        Window.viewModel = new ViewModel();
+        ko.applyBindings(Window.viewModel);
+    }
+    
+    function ViewModel() {
+        var that = this;
+
+        this.challengeUser = ko.observableArray();
+        this.challenges = ko.observableArray();
+
+        challenges.foreach(function (challenge) {
+            that.challenges.push(challenge);
+        });
+    }
 </script>
 
