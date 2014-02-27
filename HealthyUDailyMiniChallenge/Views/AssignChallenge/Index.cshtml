@@ -9,25 +9,14 @@
 <script src="~/Scripts/knockout-2.2.0.js"></script>
     -->
 <h2>Index</h2>
-<select data-bind="options: challenges"></select>
+<select data-bind="options: availableChallenges, optionsText: 'challengeDescription'"></select>
 
-<script type="text/javascript">
-    var challengeVM = function(){
-        var self = this;
-        self.challengeId = ko.observable();
-        self.challengeDescription = ko.observable();
-    }
-
-    $(function() {
-        //var challengeObject = new challengeVM();
-        //challengeObject.challengeId(self.challengeId).challengeDescription(self.challengeDescription);
-        ////challengeObject.challengeId(ch
-        //ko.applyBindings(challengeObject);
-        //});
-        var challenges = $.getJSON('/Api/ChallengeApi', function (data) {
-            //self.challengeId = data.challengeId;
-            self.challengeDescription = data.challengeDescription;
-        });
+<script type="text/javascript">   
+    $.getJSON('/Api/ChallengeApi', null, function (challengedata, status, xhr) {
+        var viewModel = {
+            availableChallenges: ko.observableArray(challengedata)
+        };
+        ko.applyBindings(viewModel);
     });
 </script>
 
