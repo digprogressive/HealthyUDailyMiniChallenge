@@ -44,12 +44,8 @@
     function ViewModel() {
         var that = this;
 
-        this.challengeUser = ko.observableArray();
-        this.challenges = ko.observableArray();
-
-        challenges.foreach(function (challenge) {
-            that.challenges.push(challenge);
-        });
+        this.challengeUser = ko.observableArray(challengeUsers);
+        this.challenges = ko.observableArray(challenges);
     }
 </script>
 
