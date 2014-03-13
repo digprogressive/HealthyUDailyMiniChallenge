@@ -12,7 +12,9 @@
     <h2>Available Challenges: </h2>
     <select class="selectAvailable" data-bind="options: challenges, optionsText: 'challengeDescription', selectedOptions: temporaryChosenChallenges" multiple= "true"></select>
     <input class="chooseButton" type="button" value="Choose Challenges >>" data-bind="click: sendToChosen" />
-    <select class="chosen" data-bind="options: chosenChallenges, optionsText: 'challengeDescription'" multiple="true"></select>
+    <select class="chosen" data-bind="foreach:chosenChallenges" multiple="true">
+        <option data-bind="text: $data.challengeDescription"></option>
+    </select>
 </div>
 
 <h2>Available Users: </h2>
@@ -22,6 +24,7 @@
     var challengeUsers;
     var challenges;
     var temporaryChosen;
+    var chosenChallenges;
     var challengesResource = new Resource('/Api/Challenge');
     var gettingChallenges = challengesResource.get();
     var challengeUsersResource = new Resource('/Api/ChallengeUsers');
@@ -35,11 +38,12 @@
     $.when(gettingChallenges, gettingChallengeUsers).done(readyToRock);
 
     function sendToChosen() {
-        var challenges = this.temporaryChosenChallenges();
-        for (var challenge in challenges)
+        var challengesTemp = this.temporaryChosenChallenges();
+        for(i=0; i<challengesTemp.length; i++)
         {
-            this.chosenChallenges.push({"challengeDescription": challenge.challengeDescription});
-            this.challenges.remove(challenge);
+            var challengei = challengesTemp[i];
+            this.chosenChallenges.push({"challengeDescription": challengei.challengeDescription});
+            this.challenges.remove(challengei);
         }
     }
 
@@ -52,7 +56,7 @@
         var that = this;
         this.temporaryChosenChallenges = ko.observableArray([]);
         this.challengeUsers = ko.observableArray(challengeUsers);
-        this.chosenChallengeUsers = ko.observableArray([]);
+        this.chosenChallengeUsers = ko.observableArray([""]);
         this.challenges = ko.observableArray(challenges);
         this.chosenChallenges = ko.observableArray([]);
     }
