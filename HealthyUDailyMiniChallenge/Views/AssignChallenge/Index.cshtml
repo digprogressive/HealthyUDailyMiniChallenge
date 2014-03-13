@@ -7,14 +7,21 @@
 
 <script src="~/Scripts/resources.js"></script>
 <script src="~/Scripts/knockout-2.2.0.js"></script>
-   
-<h2>Index</h2>
-<select data-bind="options: challenges, optionsText: 'challengeDescription'" multiple= "true"></select>
-<!--<select data-bind="options: challengeUser, optionsText: 'challengeDescription'" multiple= "true"></select>-->
+@*<script src="~/Scripts/app.js"></script>*@
+<div class="challenges">
+    <h2>Available Challenges: </h2>
+    <select class="selectAvailable" data-bind="options: challenges, optionsText: 'challengeDescription', selectedOptions: temporaryChosenChallenges" multiple= "true"></select>
+    <input class="chooseButton" type="button" value="Choose Challenges >>" data-bind="click: sendToChosen" />
+    <select class="chosen" data-bind="options: chosenChallenges, optionsText: 'challengeDescription'" multiple="true"></select>
+</div>
+
+<h2>Available Users: </h2>
+<select data-bind="options: challengeUsers, optionsText: 'name'" multiple= "true"></select>
 
 <script type="text/javascript">
     var challengeUsers;
     var challenges;
+    var temporaryChosen;
     var challengesResource = new Resource('/Api/Challenge');
     var gettingChallenges = challengesResource.get();
     var challengeUsersResource = new Resource('/Api/ChallengeUsers');
@@ -22,19 +29,19 @@
 
 
     gettingChallenges.done(function (challengesFromServer) { challenges = challengesFromServer; });
-
-
-    //$.getJSON('/Api/Challenge', null, function (challengedata, status, xhr) {
-    //    var viewModel = {
-    //        availableChallenges: ko.observableArray(challengedata)
-    //    };
-    //    ko.applyBindings(viewModel);
-    //});
-
  
     gettingChallengeUsers.done(function (challengeUsersFromServer) { challengeUsers = challengeUsersFromServer; });
 
     $.when(gettingChallenges, gettingChallengeUsers).done(readyToRock);
+
+    function sendToChosen() {
+        var challenges = this.temporaryChosenChallenges();
+        for (var challenge in challenges)
+        {
+            this.chosenChallenges.push({"challengeDescription": challenge.challengeDescription});
+            this.challenges.remove(challenge);
+        }
+    }
 
     function readyToRock() {
         Window.viewModel = new ViewModel();
@@ -43,9 +50,11 @@
     
     function ViewModel() {
         var that = this;
-
-        this.challengeUser = ko.observableArray(challengeUsers);
+        this.temporaryChosenChallenges = ko.observableArray([]);
+        this.challengeUsers = ko.observableArray(challengeUsers);
+        this.chosenChallengeUsers = ko.observableArray([]);
         this.challenges = ko.observableArray(challenges);
+        this.chosenChallenges = ko.observableArray([]);
     }
 </script>
 

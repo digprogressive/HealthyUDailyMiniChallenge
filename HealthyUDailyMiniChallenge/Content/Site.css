@@ -58,6 +58,23 @@ mark {
     visibility: hidden;
 }
 
+.challenges {
+    display: inline;
+}
+
+.selectAvailable {
+    padding-right: 30px;
+}
+
+.chooseButton {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.chosen {
+    padding-left: 30px;
+}
+
 h1, h2, h3,
 h4, h5, h6 {
     color: #000;
