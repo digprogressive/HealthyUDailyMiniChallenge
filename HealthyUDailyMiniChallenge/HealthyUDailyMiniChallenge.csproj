@@ -189,6 +189,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AssignChallengeController.cs" />
+    <Compile Include="Controllers\AssignChallengeServiceController.cs" />
     <Compile Include="Controllers\ChallengeController.cs" />
     <Compile Include="Controllers\ChallengeTrackerController.cs" />
     <Compile Include="Controllers\ChallengeUsersController.cs" />
@@ -343,7 +344,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>64255</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:50361/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

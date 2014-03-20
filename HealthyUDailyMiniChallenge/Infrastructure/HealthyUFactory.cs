@@ -24,6 +24,7 @@ namespace HealthyUDailyMiniChallenge.Infrastructure
 
         protected override IController GetControllerInstance(RequestContext requestcontext, Type controllertype)
         {
+            var x = controllertype == null ? null : (IController)healthyUKernel.Get(controllertype);
             return controllertype == null ? null : (IController)healthyUKernel.Get(controllertype);
         }
 
