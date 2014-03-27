@@ -49,10 +49,10 @@
 
     var assignChallengeResource = new Resource('/Api/AssignChallengeService');
 
-    var AssignChallengeVM = function () {
+    var AssignChallengeVM = function (chosenChallenges, chosenChallengeUsers) {
 
-        this.chosenChallenges = chosenChallenges;
-        this.chosenChallengeUsers = chosenChallengeUsers;
+        this.assignedChallenges = chosenChallenges;
+        this.assignedUsers = chosenChallengeUsers;
     }
 
 
@@ -96,12 +96,11 @@
         this.temporaryChosenChallenges = ko.observableArray([]);
         this.temporaryChosenUsers = ko.observableArray([]);
         this.challengeUsers = ko.observableArray(challengeUsers);
-        this.chosenChallengeUsers = ko.observableArray([""]);
+        this.chosenChallengeUsers = ko.observableArray([]);
         this.challenges = ko.observableArray(challenges);
         this.chosenChallenges = ko.observableArray([]);
-        this.chosenChallengeUsers = ko.observableArray([]);
 
-        that.challengeUserToAdd = ko.observable(new AssignChallengeVM());
+        that.challengeUserToAdd = ko.observable(new AssignChallengeVM(this.chosenChallenges(), this.chosenChallengeUsers()));
 
         that.addAssignChallenge = function () {
  
