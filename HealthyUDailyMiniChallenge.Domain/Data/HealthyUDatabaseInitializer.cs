@@ -67,7 +67,7 @@ namespace HealthyUDailyMiniChallenge.Domain.Data
             context.Challenges.Add(quickChallenge);
             context.Challenges.Add(beginnerChallenge);
             context.Challenges.Add(advancedChallenge);
-            context.ChallengeStatuses.Add(newChallengeStatus);
+            //context.ChallengeStatuses.Add(newChallengeStatus);
             context.SaveChanges();
 
         }

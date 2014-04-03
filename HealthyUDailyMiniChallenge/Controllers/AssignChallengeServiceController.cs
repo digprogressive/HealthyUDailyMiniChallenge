@@ -1,4 +1,5 @@
 ﻿using HealthyUDailyMiniChallenge.Domain.Concrete;
+using HealthyUDailyMiniChallenge.Domain.Entities;
 using HealthyUDailyMiniChallenge.Domain.Interfaces;
 using HeathyUDailyMiniChallenge.Models;
 using System;
@@ -14,7 +15,8 @@ namespace HeathyUDailyMiniChallenge.Controllers
 {
     public class AssignChallengeServiceController : ApiController
     {
-        private ChallengeRepository repository = new ChallengeRepository();
+        private ChallengeStatusRepository repository = new ChallengeStatusRepository();
+
         //private IChallengeRepository _challengeRepository;
         //public AssignChallengeController(IChallengeRepository challengeRepository)
         //{
@@ -23,6 +25,16 @@ namespace HeathyUDailyMiniChallenge.Controllers
 
         public HttpResponseMessage Post(ChallengeUser challengeuser)
         {
+            IList<ChallengeStatus> challengeStatusList = new List<ChallengeStatus>();
+            foreach (var user in challengeuser.AssignedUsers)
+            {
+                foreach (var challenge in challengeuser.AssignedChallenges)
+                {
+                    challengeStatusList.Add(new ChallengeStatus() { AssignedChallenge = challenge, ChallengeUser = user });
+                }
+            }
+
+            repository.PostChallengeStatuses(challengeStatusList);
             
             //add to entity framework
             return Request.CreateResponse(HttpStatusCode.Created, challengeuser);

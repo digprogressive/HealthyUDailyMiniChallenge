@@ -68,7 +68,10 @@
         for(i=0; i<challengesTemp.length; i++)
         {
             var challengei = challengesTemp[i];
-            this.chosenChallenges.push({"challengeDescription": challengei.challengeDescription});
+            this.chosenChallenges.push({
+                "challengeDescription": challengei.challengeDescription, 
+                "challengeId": challengei.challengeId
+            });
             this.challenges.remove(challengei);
         }
 
@@ -79,7 +82,7 @@
         var usersTemp = this.temporaryChosenUsers();
         for (i = 0; i < usersTemp.length; i++) {
             var usersi = usersTemp[i];
-            this.chosenChallengeUsers.push({ "name": usersi.name });
+            this.chosenChallengeUsers.push({ "name": usersi.name, "userId": usersi.userId });
             this.challengeUsers.remove(usersi);
         }
 
