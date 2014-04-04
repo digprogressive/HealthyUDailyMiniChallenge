@@ -8,12 +8,17 @@ namespace HealthyUDailyMiniChallenge.Domain.Entities
 {
     public class ChallengeStatus
     {
-        public virtual User ChallengeUser { get; set; }
-        public Guid UserId { get; set; }
+         public ChallengeStatus()
+        {
+            this.ActivityStatus = new List<ActivityStatus>();
+        }
+
         public Guid ChallengeStatusId { get; set; }
-        public virtual Challenge AssignedChallenge { get; set; }
-        public Guid ChallengeId { get; set; }
         public bool Status { get; set; }
-        public virtual ICollection<ActivityStatus> ListOfActivityStatuses { get; set; }
+        public Guid? ChallengeId { get; set; }
+        public Guid? UserId { get; set; }
+        public virtual User ChallengeUser { get; set; }
+        public virtual Challenge AssignedChallenge { get; set; } 
+        public virtual ICollection<ActivityStatus> ActivityStatus { get; set; }
     }
 }

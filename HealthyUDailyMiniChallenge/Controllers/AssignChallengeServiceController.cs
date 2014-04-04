@@ -30,7 +30,7 @@ namespace HeathyUDailyMiniChallenge.Controllers
             {
                 foreach (var challenge in challengeuser.AssignedChallenges)
                 {
-                    challengeStatusList.Add(new ChallengeStatus() { AssignedChallenge = challenge, ChallengeUser = user });
+                    challengeStatusList.Add(new ChallengeStatus() { ChallengeId = challenge.ChallengeId, UserId = user.UserId,Status=false, ChallengeStatusId = Guid.NewGuid() });
                 }
             }
 
