@@ -22,7 +22,7 @@ namespace HealthyUDailyMiniChallenge
         {
             AreaRegistration.RegisterAllAreas();
             CustomizeConfig(GlobalConfiguration.Configuration);
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
@@ -44,7 +44,8 @@ namespace HealthyUDailyMiniChallenge
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.ContractResolver =
                 new CamelCasePropertyNamesContractResolver();
-
+            json.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            json.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
             // Add model validation, globally
            // config.Filters.Add(new ValidationActionFilter());
         }

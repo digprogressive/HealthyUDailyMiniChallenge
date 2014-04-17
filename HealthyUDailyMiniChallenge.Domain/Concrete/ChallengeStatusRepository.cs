@@ -38,14 +38,12 @@ namespace HealthyUDailyMiniChallenge.Domain.Concrete
 
         public void PostChallengeStatuses(IList<ChallengeStatus> challengeStatusList)
         {
-            DbSet<ChallengeStatus> dbset = _healthyUEFDBContext.Set<ChallengeStatus>();
+            
             foreach (var entity in challengeStatusList)
             {
-                dbset.Add(entity);
-            }
-
-            _healthyUEFDBContext.SaveChanges();
-
+                _healthyUEFDBContext.ChallengeStatuses.Add(entity);
+                _healthyUEFDBContext.SaveChanges();
+            }           
 
         }
     }

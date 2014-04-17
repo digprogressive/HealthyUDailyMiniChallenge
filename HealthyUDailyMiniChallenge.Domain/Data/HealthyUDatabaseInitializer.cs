@@ -9,7 +9,7 @@ using HealthyUDailyMiniChallenge.Domain.Entities;
 
 namespace HealthyUDailyMiniChallenge.Domain.Data
 {
-    public class HealthyUDatabaseInitializer : DropCreateDatabaseAlways<HealthyUEFDbContext>
+    public class HealthyUDatabaseInitializer : DropCreateDatabaseIfModelChanges<HealthyUEFDbContext>
     {
         protected override void Seed(HealthyUEFDbContext context)
         {
@@ -56,7 +56,7 @@ namespace HealthyUDailyMiniChallenge.Domain.Data
                 ChallengeStatusId = Guid.NewGuid(),
                 AssignedChallenge = quickChallenge,
                 Status = true,
-                ListOfActivityStatuses = new List<ActivityStatus>() 
+                ActivityStatus = new List<ActivityStatus>() 
                 {
                     new ActivityStatus() {ActivityStatusId = Guid.NewGuid(), AssignedActivity = ListOfActs.First(), Status = "Done"
                     }

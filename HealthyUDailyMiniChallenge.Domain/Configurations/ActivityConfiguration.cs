@@ -12,7 +12,7 @@ namespace HealthyUDailyMiniChallenge.Domain.Configurations
     {
         public ActivityConfiguration()
         {
-            
+            MapToStoredProcedures();
         }
     }
 }
