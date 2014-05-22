@@ -42,7 +42,7 @@ namespace HealthyUDailyMiniChallenge.Domain.Concrete
             foreach (var entity in challengeStatusList)
             {
 
-                if (_healthyUEFDBContext.ChallengeStatuses.Any(e => e.ChallengeId != entity.ChallengeId && e.UserId != entity.UserId))
+                if (_healthyUEFDBContext.ChallengeStatuses.Where(e => e.ChallengeId != entity.ChallengeId && e.UserId != entity.UserId).Count()==0)
                 {
                     _healthyUEFDBContext.ChallengeStatuses.Add(entity);
                     _healthyUEFDBContext.SaveChanges();
